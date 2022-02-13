@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Select from "react-select";
+import SelectAsyncPaginate from "./SelectAsyncPaginate";
 
-function App() {
+
+const App = ()=> {
+  
+  const [selectValue, setSelectValue] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content">
+        <div className="mt-5">
+         
+          <div row>
+            <label for="region" sm={1} className="text-left">
+              Paginated React Select
+            </label>
+            <div sm={8}>
+              <SelectAsyncPaginate
+              value={selectValue}
+             onChange={(value)=>setSelectValue(value)}
+              SelectValue={(option) => option.name}
+              SelectLabel={(option) => option.name}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
+
+export default App
+
+
